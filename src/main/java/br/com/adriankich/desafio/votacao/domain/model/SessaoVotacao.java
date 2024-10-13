@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -17,6 +18,7 @@ import java.util.List;
 public class SessaoVotacao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
@@ -47,6 +49,10 @@ public class SessaoVotacao {
         this.status = SessaoEnum.ABERTA;
         this.startTime = LocalDateTime.now();
         this.endTime = startTime.plusMinutes(minutes);
+        this.result = SessaoEnum.EM_VOTACAO;
+        this.votos = new ArrayList<>();
+        this.totalReproved = 0l;
+        this.totalApproved = 0l;
     }
 
     public void updateStatus() {
