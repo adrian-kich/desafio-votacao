@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 @Table(name = "pautas")
 public class Pauta {
 
+    public static final Long DEFAULT_SESSAO_TIME = 1l;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
