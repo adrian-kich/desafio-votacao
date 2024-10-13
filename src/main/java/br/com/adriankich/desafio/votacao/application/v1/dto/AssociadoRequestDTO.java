@@ -10,6 +10,5 @@ import lombok.Setter;
 public class AssociadoRequestDTO {
 
     private String name;
-
     private String document;
 }
