@@ -1,6 +1,5 @@
 package br.com.adriankich.desafio.votacao.domain.model;
 
-import br.com.adriankich.desafio.votacao.domain.enums.AssociadoEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,7 +22,4 @@ public class Associado {
 
     @Column(nullable = false)
     private String document;
-
-    @Enumerated(EnumType.STRING)
-    private AssociadoEnum status;
 }
