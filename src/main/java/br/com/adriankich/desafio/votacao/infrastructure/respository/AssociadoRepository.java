@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface AssociadoRepository extends JpaRepository<Associado, Long> {
     Optional<Associado> findByDocument(String document);
+    boolean existsByDocument(String document);
 }
