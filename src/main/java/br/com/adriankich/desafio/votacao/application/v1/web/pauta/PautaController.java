@@ -2,10 +2,7 @@ package br.com.adriankich.desafio.votacao.application.v1.web.pauta;
 
 import br.com.adriankich.desafio.votacao.application.v1.adapter.PautaAdapter;
 import br.com.adriankich.desafio.votacao.application.v1.adapter.SessaoVotacaoAdapter;
-import br.com.adriankich.desafio.votacao.application.v1.dto.PautaRequestDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.PautaResponseDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoRequestDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoResponseDTO;
+import br.com.adriankich.desafio.votacao.application.v1.dto.*;
 import br.com.adriankich.desafio.votacao.domain.model.Pauta;
 import br.com.adriankich.desafio.votacao.domain.service.impl.PautaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +42,10 @@ public class PautaController implements PautaApi{
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(SessaoVotacaoAdapter.entityToDto(pautaService.startSessaoVotacao(id, sessaoDTO)));
+    }
+
+    @Override
+    public ResponseEntity<ResultResponseDTO> getResult(Long id) {
+        return ResponseEntity.ok(pautaService.getResult(id));
     }
 }

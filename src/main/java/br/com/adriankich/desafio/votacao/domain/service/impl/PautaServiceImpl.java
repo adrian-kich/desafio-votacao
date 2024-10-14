@@ -1,6 +1,7 @@
 package br.com.adriankich.desafio.votacao.domain.service.impl;
 
 import br.com.adriankich.desafio.votacao.application.v1.dto.PautaRequestDTO;
+import br.com.adriankich.desafio.votacao.application.v1.dto.ResultResponseDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoRequestDTO;
 import br.com.adriankich.desafio.votacao.domain.enums.PautaEnum;
 import br.com.adriankich.desafio.votacao.domain.exception.AlreadyExistsException;
@@ -75,6 +76,30 @@ public class PautaServiceImpl implements PautaService {
             return sessaoVotacao;
         } else {
             throw new AlreadyExistsException("Já existe uma sessão de votação para esta pauta. Id da sessão: #" + pauta.getSessaoVotacao().getId());
+        }
+    }
+
+    public ResultResponseDTO getResult(Long pautaId) {
+        Pauta pauta = getPautaById(pautaId);
+
+        SessaoVotacao sessaoVotacao = pauta.getSessaoVotacao();
+
+        if(sessaoVotacao != null) {
+            ResultResponseDTO resultDTO = ResultResponseDTO.builder()
+                    .id(pauta.getId())
+                    .title(pauta.getTitle())
+                    .description(pauta.getDescription())
+                    .startTimeVoting(sessaoVotacao.getStartTime())
+                    .endTimeVoting(sessaoVotacao.getEndTime())
+                    .result(sessaoVotacao.getResult().getValue())
+                    .approved(sessaoVotacao.getTotalApproved())
+                    .reproved(sessaoVotacao.getTotalReproved())
+                    .total(((long) sessaoVotacao.getVotos().size()))
+                    .build();
+
+            return resultDTO;
+        } else {
+            throw new NotFoundException("Não foi iniciada uma sessão de votação para esta pauta");
         }
     }
 }

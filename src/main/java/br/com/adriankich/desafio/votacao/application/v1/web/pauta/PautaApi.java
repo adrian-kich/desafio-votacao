@@ -1,10 +1,7 @@
 package br.com.adriankich.desafio.votacao.application.v1.web.pauta;
 
 import br.com.adriankich.desafio.votacao.application.v1.context.ApplicationContext;
-import br.com.adriankich.desafio.votacao.application.v1.dto.PautaRequestDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.PautaResponseDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoRequestDTO;
-import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoResponseDTO;
+import br.com.adriankich.desafio.votacao.application.v1.dto.*;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,4 +24,7 @@ public interface PautaApi {
     @PostMapping("/{id}/sessao")
     ResponseEntity<SessaoVotacaoResponseDTO> startSessaoVotacao(@PathVariable Long id,
                                                                 @RequestBody(required = false) SessaoVotacaoRequestDTO sessaoDTO);
+
+    @GetMapping("/{id}/resultado")
+    ResponseEntity<ResultResponseDTO> getResult(@PathVariable Long id);
 }
