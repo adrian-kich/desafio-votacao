@@ -4,17 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 public class StandardError {
 
-    private LocalDateTime timestamp;
-    private Integer status;
-    private String error;
-    private String path;
+    protected LocalDateTime timestamp;
+    protected Integer status;
+    protected String error;
+    protected String path;
 }

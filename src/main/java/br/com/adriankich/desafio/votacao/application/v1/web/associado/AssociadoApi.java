@@ -3,6 +3,7 @@ package br.com.adriankich.desafio.votacao.application.v1.web.associado;
 import br.com.adriankich.desafio.votacao.application.v1.context.ApplicationContext;
 import br.com.adriankich.desafio.votacao.application.v1.dto.AssociadoRequestDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.AssociadoResponseDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,5 @@ public interface AssociadoApi {
     ResponseEntity<AssociadoResponseDTO> getAssociadoByDocument(@PathVariable String document);
 
     @PostMapping
-    ResponseEntity<AssociadoResponseDTO> createAssociado(@RequestBody AssociadoRequestDTO associadoDTO);
+    ResponseEntity<AssociadoResponseDTO> createAssociado(@RequestBody @Valid AssociadoRequestDTO associadoDTO);
 }

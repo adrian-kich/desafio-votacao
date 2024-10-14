@@ -1,17 +1,22 @@
 package br.com.adriankich.desafio.votacao.application.v1.exception.handler;
 
 import br.com.adriankich.desafio.votacao.application.v1.exception.StandardError;
+import br.com.adriankich.desafio.votacao.application.v1.exception.ValidationError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 public interface ResourceExceptionHandler<T extends Exception> {
 
-    public ResponseEntity<StandardError> handle(T ex, HttpServletRequest request );
+    public ResponseEntity<?> handle(T ex, HttpServletRequest request );
 
     public default ResponseEntity<StandardError> response( Exception ex, HttpServletRequest request, HttpStatus status )
     {
@@ -19,6 +24,25 @@ public interface ResourceExceptionHandler<T extends Exception> {
                 .timestamp(LocalDateTime.now())
                 .status(status.value())
                 .error(ex.getMessage())
+                .path(request.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(status).body(error);
+    }
+
+    public default ResponseEntity<ValidationError> responseValidation(
+            MethodArgumentNotValidException ex, HttpServletRequest request, HttpStatus status )
+    {
+        List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
+        String fields = fieldErrors.stream().map(FieldError::getField).collect(Collectors.joining(", "));
+        String fieldsMessage = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.joining(", "));
+
+        ValidationError error = ValidationError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(status.value())
+                .error(ex.getClass().getName())
+                .fields(fields)
+                .fieldsMessage(fieldsMessage)
                 .path(request.getRequestURI())
                 .build();
 
