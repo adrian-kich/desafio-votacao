@@ -14,7 +14,7 @@ public class SessaoVotacaoAdapter {
                 .status(sessaoVotacao.getStatus().getValue())
                 .result(sessaoVotacao.getResult().getValue())
                 .approved(sessaoVotacao.getTotalApproved())
-                .reproved(sessaoVotacao.getTotalApproved())
+                .reproved(sessaoVotacao.getTotalReproved())
                 .total(((long) sessaoVotacao.getVotos().size()))
                 .build();
     }

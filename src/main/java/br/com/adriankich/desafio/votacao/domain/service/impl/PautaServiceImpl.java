@@ -29,7 +29,7 @@ public class PautaServiceImpl implements PautaService {
     }
 
     public Pauta getPautaById(Long id) {
-        Pauta pauta =  pautaRepository.findById(id)
+        Pauta pauta = pautaRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Não foi encontrado uma pauta com o id: #" + id));
 
         updatePauta(pauta);
