@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.FIELD })
 @Retention( RetentionPolicy.RUNTIME )
 public @interface CpfOrCnpj {
-    String message() default "CPF ou CNPJ inválido";
+    String message() default "CPF ou CNPJ inválido. Informe apenas os números, sem pontos ou traços";
 
     Class<?>[] groups() default {};
 

@@ -4,6 +4,7 @@ import br.com.adriankich.desafio.votacao.application.v1.context.ApplicationConte
 import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoResponseDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.VotoRequestDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.VotoResponseDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,5 @@ public interface SessaoApi {
     ResponseEntity<SessaoVotacaoResponseDTO> getSessaoById(@PathVariable Long id);
 
     @PostMapping("/{id}/voto")
-    ResponseEntity<VotoResponseDTO> addVoto(@PathVariable Long id, @RequestBody VotoRequestDTO votoDTO);
+    ResponseEntity<VotoResponseDTO> addVoto(@PathVariable Long id, @RequestBody @Valid VotoRequestDTO votoDTO);
 }
