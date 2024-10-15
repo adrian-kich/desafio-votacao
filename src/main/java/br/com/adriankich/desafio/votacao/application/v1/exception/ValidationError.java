@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 public class ValidationError extends StandardError {
+
     private String fields;
     private String fieldsMessage;
 }

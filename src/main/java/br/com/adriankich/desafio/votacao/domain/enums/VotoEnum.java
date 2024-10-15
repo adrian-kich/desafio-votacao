@@ -16,7 +16,12 @@ public enum VotoEnum {
         this.valor = voto;
     }
 
-    public String getValor() {
+    /**
+     * getValor
+     *
+     * @return String
+     */
+    public String getValue() {
         return this.valor;
     }
 }

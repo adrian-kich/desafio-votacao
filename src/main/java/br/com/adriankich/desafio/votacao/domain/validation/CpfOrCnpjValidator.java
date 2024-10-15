@@ -7,6 +7,7 @@ import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator;
 import org.springframework.util.StringUtils;
 
 public class CpfOrCnpjValidator implements ConstraintValidator<CpfOrCnpj, String> {
+
     /**
      * isValid
      *

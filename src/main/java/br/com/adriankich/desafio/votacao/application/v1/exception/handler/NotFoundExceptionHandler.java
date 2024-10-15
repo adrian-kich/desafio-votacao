@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class NotFoundExceptionHandler implements ResourceExceptionHandler<NotFoundException> {
 
+    /**
+     * handle
+     *
+     * @param ex AlreadyExistsException
+     * @param request HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
     @Override
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<StandardError> handle(NotFoundException ex, HttpServletRequest request) {

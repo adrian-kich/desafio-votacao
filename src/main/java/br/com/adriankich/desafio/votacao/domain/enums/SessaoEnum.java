@@ -12,13 +12,21 @@ public enum SessaoEnum {
 
     private final String value;
 
-    SessaoEnum(String status )
-    {
+    /**
+     * SessaoEnum
+     *
+     * @param status
+     */
+    SessaoEnum(String status) {
         this.value = status;
     }
 
-    public String getValue()
-    {
+    /**
+     * getValue
+     *
+     * @return String
+     */
+    public String getValue() {
         return value;
     }
 }

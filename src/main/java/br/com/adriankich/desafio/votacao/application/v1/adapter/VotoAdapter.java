@@ -5,12 +5,18 @@ import br.com.adriankich.desafio.votacao.domain.model.Voto;
 
 public class VotoAdapter {
 
+    /**
+     * entityToDto
+     *
+     * @param voto Voto
+     * @return VotoResponseDTO
+     */
     public static VotoResponseDTO entityToDto(Voto voto) {
         return VotoResponseDTO.builder()
                 .id(voto.getId())
                 .associadoId(voto.getAssociado().getId())
                 .sessaoVotacaoId(voto.getSessao().getId())
-                .voto(voto.getVoto().getValor())
+                .voto(voto.getVoto().getValue())
                 .build();
     }
 }

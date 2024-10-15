@@ -17,23 +17,46 @@ public class AssociadoServiceImpl implements AssociadoService {
     @Autowired
     private AssociadoRepository associadoRepository;
 
+    /**
+     * getAssociados
+     *
+     * @return List<Associado>
+     */
     @Override
     public List<Associado> getAssociados() {
         return associadoRepository.findAll();
     }
 
+    /**
+     * getAssociadoById
+     *
+     * @param id Long
+     * @return Associado
+     */
     @Override
     public Associado getAssociadoById(Long id) {
         return associadoRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Não foi encontrado um associado com o id: #" + id));
     }
 
+    /**
+     * getAssociadoByDocument
+     *
+     * @param document String
+     * @return Associado
+     */
     @Override
     public Associado getAssociadoByDocument(String document) {
         return associadoRepository.findByDocument(document)
                 .orElseThrow(() -> new NotFoundException("Não foi encontrado um associado com este documento: " + document));
     }
 
+    /**
+     * createAssociado
+     *
+     * @param associadoDTO AssociadoRequestDTO
+     * @return Associado
+     */
     @Override
     public Associado createAssociado(AssociadoRequestDTO associadoDTO) {
         Associado associado = Associado.builder()
@@ -44,6 +67,12 @@ public class AssociadoServiceImpl implements AssociadoService {
         return addAssociado(associado);
     }
 
+    /**
+     * addAssociado
+     *
+     * @param associado Associado
+     * @return Associado
+     */
     @Override
     public Associado addAssociado(Associado associado) {
         if(associadoRepository.existsByDocument(associado.getDocument())) {

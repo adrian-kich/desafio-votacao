@@ -15,6 +15,12 @@ public class CpfValidatorController implements CpfValidatorApi {
     @Autowired
     private CpfValidatorServiceImpl cpfValidatorService;
 
+    /**
+     * validator
+     *
+     * @param cpf
+     * @return ResponseEntity
+     */
     @Override
     public ResponseEntity validator(String cpf) {
         ValidatorEnum status = cpfValidatorService.validateCpf(cpf);

@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class DocumentAlreadyUsedExceptionHandler implements ResourceExceptionHandler<DocumentAlreadyUsedException> {
 
+    /**
+     * handle
+     *
+     * @param ex AlreadyExistsException
+     * @param request HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
     @Override
     @ExceptionHandler(DocumentAlreadyUsedException.class)
     public ResponseEntity<StandardError> handle(DocumentAlreadyUsedException ex, HttpServletRequest request) {

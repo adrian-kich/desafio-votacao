@@ -5,6 +5,12 @@ import br.com.adriankich.desafio.votacao.domain.model.Pauta;
 
 public class PautaAdapter {
 
+    /**
+     * entityToDto
+     *
+     * @param pauta Pauta
+     * @return PautaResponseDTO
+     */
     public static PautaResponseDTO entityToDto(Pauta pauta) {
         return PautaResponseDTO.builder()
                 .id(pauta.getId())

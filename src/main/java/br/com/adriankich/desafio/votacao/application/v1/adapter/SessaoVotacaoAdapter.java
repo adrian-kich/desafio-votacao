@@ -5,6 +5,12 @@ import br.com.adriankich.desafio.votacao.domain.model.SessaoVotacao;
 
 public class SessaoVotacaoAdapter {
 
+    /**
+     * entityToDto
+     *
+     * @param sessaoVotacao SessaoVotacao
+     * @return SessaoVotacaoResponseDTO
+     */
     public static SessaoVotacaoResponseDTO entityToDto(SessaoVotacao sessaoVotacao) {
         return SessaoVotacaoResponseDTO.builder()
                 .id(sessaoVotacao.getId())

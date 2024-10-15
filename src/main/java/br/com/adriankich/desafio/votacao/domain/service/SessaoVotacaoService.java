@@ -7,11 +7,8 @@ import br.com.adriankich.desafio.votacao.domain.model.Voto;
 
 public interface SessaoVotacaoService {
 
-    public SessaoVotacao getSessaoVotacao(Long id);
-
+    SessaoVotacao getSessaoVotacao(Long id);
     SessaoVotacao createSessao(Pauta pauta, Long minutes);
-
     SessaoVotacao updateSessaoVotacao(SessaoVotacao sessaoVotacao);
-
     Voto addVoto(Long sessaoVotacaoId, VotoRequestDTO votoDTO);
 }

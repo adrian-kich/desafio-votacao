@@ -10,13 +10,21 @@ public enum PautaEnum {
 
     private final String value;
 
-    PautaEnum(String status )
-    {
+    /**
+     * PautaEnum
+     *
+     * @param status
+     */
+    PautaEnum(String status) {
         this.value = status;
     }
 
-    public String getValue()
-    {
+    /**
+     * getValue
+     *
+     * @return String
+     */
+    public String getValue() {
         return value;
     }
 }

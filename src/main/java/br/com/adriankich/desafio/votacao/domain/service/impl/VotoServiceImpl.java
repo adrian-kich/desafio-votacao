@@ -17,11 +17,25 @@ public class VotoServiceImpl implements VotoService {
     @Autowired
     private VotoRepository votoRepository;
 
+    /**
+     * getVoto
+     *
+     * @param id Long
+     * @return Voto
+     */
     @Override
     public Voto getVoto(Long id) {
         return votoRepository.findById(id).orElseThrow();
     }
 
+    /**
+     * createVoto
+     *
+     * @param sessaoVotacao sessaoVotacao
+     * @param associado Associado
+     * @param votoOption votoOption
+     * @return Voto
+     */
     @Override
     public Voto createVoto(SessaoVotacao sessaoVotacao, Associado associado, VotoEnum votoOption) {
         Voto voto = Voto.builder()

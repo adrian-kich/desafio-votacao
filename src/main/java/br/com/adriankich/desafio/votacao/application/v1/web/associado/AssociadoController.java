@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -18,6 +17,11 @@ public class AssociadoController implements AssociadoApi {
     @Autowired
     private AssociadoServiceImpl associadoService;
 
+    /**
+     * getAssociados
+     *
+     * @return ResponseEntity<List<AssociadoResponseDTO>>
+     */
     @Override
     public ResponseEntity<List<AssociadoResponseDTO>> getAssociados() {
         return ResponseEntity.ok(associadoService.getAssociados()
@@ -26,16 +30,34 @@ public class AssociadoController implements AssociadoApi {
                 .toList());
     }
 
+    /**
+     * getAssociadoById
+     *
+     * @param id
+     * @return ResponseEntity<AssociadoResponseDTO>
+     */
     @Override
     public ResponseEntity<AssociadoResponseDTO> getAssociadoById(Long id) {
         return ResponseEntity.ok(AssociadoAdapter.entityToDto(associadoService.getAssociadoById(id)));
     }
 
+    /**
+     * getAssociadoByDocument
+     *
+     * @param document
+     * @return ResponseEntity<AssociadoResponseDTO>
+     */
     @Override
     public ResponseEntity<AssociadoResponseDTO> getAssociadoByDocument(String document) {
         return ResponseEntity.ok(AssociadoAdapter.entityToDto(associadoService.getAssociadoByDocument(document)));
     }
 
+    /**
+     * createAssociado
+     *
+     * @param associadoDTO
+     * @return ResponseEntity<AssociadoResponseDTO>
+     */
     @Override
     public ResponseEntity<AssociadoResponseDTO> createAssociado(AssociadoRequestDTO associadoDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)

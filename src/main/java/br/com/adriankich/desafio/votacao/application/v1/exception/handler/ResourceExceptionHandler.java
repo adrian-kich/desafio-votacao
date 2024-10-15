@@ -16,8 +16,23 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public interface ResourceExceptionHandler<T extends Exception> {
 
+    /**
+     * handle
+     *
+     * @param ex T
+     * @param request HttpServletRequest
+     * @return ResponseEntity
+     */
     public ResponseEntity<?> handle(T ex, HttpServletRequest request );
 
+    /**
+     * response
+     *
+     * @param ex Exception
+     * @param request HttpServletRequest
+     * @param status HttpStatus
+     * @return ResponseEntity<StandardError>
+     */
     public default ResponseEntity<StandardError> response( Exception ex, HttpServletRequest request, HttpStatus status )
     {
         StandardError error = StandardError.builder()
@@ -30,6 +45,14 @@ public interface ResourceExceptionHandler<T extends Exception> {
         return ResponseEntity.status(status).body(error);
     }
 
+    /**
+     * responseValidation
+     *
+     * @param ex MethodArgumentNotValidException
+     * @param request HttpServletRequest
+     * @param status HttpStatus
+     * @return ResponseEntity<ValidationError>
+     */
     public default ResponseEntity<ValidationError> responseValidation(
             MethodArgumentNotValidException ex, HttpServletRequest request, HttpStatus status )
     {

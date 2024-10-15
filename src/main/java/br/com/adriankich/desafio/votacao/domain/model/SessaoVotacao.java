@@ -44,6 +44,12 @@ public class SessaoVotacao {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
+    /**
+     * SessaoVotacao
+     *
+     * @param pauta
+     * @param minutes
+     */
     public SessaoVotacao(Pauta pauta, Long minutes) {
         this.pauta = pauta;
         this.status = SessaoEnum.ABERTA;
@@ -55,6 +61,9 @@ public class SessaoVotacao {
         this.totalApproved = 0l;
     }
 
+    /**
+     * updateStatus
+     */
     public void updateStatus() {
         if(endTime.isBefore(LocalDateTime.now())) {
             this.status = SessaoEnum.ENCERRADA;
@@ -62,10 +71,18 @@ public class SessaoVotacao {
         updateResult();
     }
 
+    /**
+     * addVoto
+     *
+     * @param voto Voto
+     */
     public void addVoto(Voto voto) {
         this.votos.add(voto);
     }
 
+    /**
+     * updateResult
+     */
     public void updateResult() {
         if (this.status.equals(SessaoEnum.ABERTA)) {
             this.result = SessaoEnum.EM_VOTACAO;

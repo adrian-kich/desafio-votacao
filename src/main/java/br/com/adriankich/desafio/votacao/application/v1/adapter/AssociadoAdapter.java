@@ -5,6 +5,12 @@ import br.com.adriankich.desafio.votacao.domain.model.Associado;
 
 public class AssociadoAdapter {
 
+    /**
+     * entityToDto
+     *
+     * @param associado Associado
+     * @return AssociadoResponseDTO
+     */
     public static AssociadoResponseDTO entityToDto(Associado associado) {
         return AssociadoResponseDTO.builder()
                 .id(associado.getId())

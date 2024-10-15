@@ -25,10 +25,21 @@ public class PautaServiceImpl implements PautaService {
     @Autowired
     private SessaoVotacaoServiceImpl sessaoVotacaoService;
 
+    /**
+     * getPautas
+     *
+     * @return List<Pauta>
+     */
     public List<Pauta> getPautas() {
         return pautaRepository.findAll().stream().map(pauta -> updatePauta(pauta)).toList();
     }
 
+    /**
+     * getPautaById
+     *
+     * @param id Long
+     * @return Pauta
+     */
     public Pauta getPautaById(Long id) {
         Pauta pauta = pautaRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Não foi encontrado uma pauta com o id: #" + id));
@@ -37,6 +48,12 @@ public class PautaServiceImpl implements PautaService {
         return pauta;
     }
 
+    /**
+     * createPauta
+     *
+     * @param pautaDTO PautaRequestDTO
+     * @return Pauta
+     */
     public Pauta createPauta(PautaRequestDTO pautaDTO) {
         Pauta pauta = Pauta.builder()
                 .title(pautaDTO.getTitle())
@@ -48,10 +65,22 @@ public class PautaServiceImpl implements PautaService {
         return addPauta(pauta);
     }
 
+    /**
+     * addPauta
+     *
+     * @param pauta Pauta
+     * @return Pauta
+     */
     public Pauta addPauta(Pauta pauta) {
         return pautaRepository.save(pauta);
     }
 
+    /**
+     * updatePauta
+     *
+     * @param pauta Pauta
+     * @return Pauta
+     */
     public Pauta updatePauta(Pauta pauta) {
         if (pauta.getSessaoVotacao() != null)
             sessaoVotacaoService.updateSessaoVotacao(pauta.getSessaoVotacao());
@@ -60,6 +89,13 @@ public class PautaServiceImpl implements PautaService {
         return pautaRepository.save(pauta);
     }
 
+    /**
+     * startSessaoVotacao
+     *
+     * @param pautaId Long
+     * @param sessaoDTO SessaoVotacaoRequestDTO
+     * @return SessaoVotacao
+     */
     public SessaoVotacao startSessaoVotacao(Long pautaId, SessaoVotacaoRequestDTO sessaoDTO) {
         Pauta pauta = getPautaById(pautaId);
 
@@ -79,6 +115,12 @@ public class PautaServiceImpl implements PautaService {
         }
     }
 
+    /**
+     * getResult
+     *
+     * @param pautaId Long
+     * @return ResultResponseDTO
+     */
     public ResultResponseDTO getResult(Long pautaId) {
         Pauta pauta = getPautaById(pautaId);
 

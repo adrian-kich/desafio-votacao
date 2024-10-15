@@ -11,16 +11,10 @@ import java.util.List;
 public interface PautaService {
 
     List<Pauta> getPautas();
-
     Pauta getPautaById(Long id);
-
     Pauta createPauta(PautaRequestDTO pautaDTO);
-
     Pauta addPauta(Pauta pauta);
-
     Pauta updatePauta(Pauta pauta);
-
     SessaoVotacao startSessaoVotacao(Long pautaId, SessaoVotacaoRequestDTO sessaoDTO);
-
     ResultResponseDTO getResult(Long pautaId);
 }

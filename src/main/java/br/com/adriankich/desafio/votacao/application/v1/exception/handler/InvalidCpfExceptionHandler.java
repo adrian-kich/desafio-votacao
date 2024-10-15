@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class InvalidCpfExceptionHandler implements ResourceExceptionHandler<InvalidCpfException> {
 
+    /**
+     * handle
+     *
+     * @param ex AlreadyExistsException
+     * @param request HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
     @Override
     @ExceptionHandler(InvalidCpfException.class)
     public ResponseEntity<?> handle(InvalidCpfException ex, HttpServletRequest request) {

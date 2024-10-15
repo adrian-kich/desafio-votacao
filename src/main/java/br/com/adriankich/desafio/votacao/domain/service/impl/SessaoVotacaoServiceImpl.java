@@ -29,6 +29,12 @@ public class SessaoVotacaoServiceImpl implements SessaoVotacaoService {
     @Autowired
     private VotoServiceImpl votoService;
 
+    /**
+     * getSessaoVotacao
+     *
+     * @param id Long
+     * @return
+     */
     @Override
     public SessaoVotacao getSessaoVotacao(Long id) {
         SessaoVotacao sessaoVotacao = sessaoVotacaoRepository.findById(id)
@@ -38,17 +44,38 @@ public class SessaoVotacaoServiceImpl implements SessaoVotacaoService {
         return sessaoVotacao;
     }
 
+    /**
+     * createSessao
+     * @param pauta Pauta
+     * @param minutes Long
+     * @return SessaoVotacao
+     */
+    @Override
     public SessaoVotacao createSessao(Pauta pauta, Long minutes) {
         SessaoVotacao sessaoVotacao = new SessaoVotacao(pauta, minutes);
 
         return sessaoVotacaoRepository.save(sessaoVotacao);
     }
 
+    /**
+     * updateSessaoVotacao
+     *
+     * @param sessaoVotacao SessaoVotacao
+     * @return SessaoVotacao
+     */
+    @Override
     public SessaoVotacao updateSessaoVotacao(SessaoVotacao sessaoVotacao) {
         sessaoVotacao.updateStatus();
         return sessaoVotacaoRepository.save(sessaoVotacao);
     }
 
+    /**
+     * addVoto
+     *
+     * @param sessaoVotacaoId Long
+     * @param votoDTO VotoRequestDTO
+     * @return Voto
+     */
     @Override
     public Voto addVoto(Long sessaoVotacaoId, VotoRequestDTO votoDTO) {
         SessaoVotacao sessaoVotacao = getSessaoVotacao(sessaoVotacaoId);

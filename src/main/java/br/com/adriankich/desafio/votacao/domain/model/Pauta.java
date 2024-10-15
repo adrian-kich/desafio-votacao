@@ -38,6 +38,12 @@ public class Pauta {
     @Column(name = "created_at")
     private LocalDateTime creationDate;
 
+    /**
+     * Pauta
+     *
+     * @param title String
+     * @param description String
+     */
     public Pauta(String title, String description) {
         this.title = title;
         this.description = description;
@@ -45,6 +51,9 @@ public class Pauta {
         this.status = PautaEnum.VOTACAO_NAO_INICIADA;
     }
 
+    /**
+     * updateStatus
+     */
     public void updateStatus() {
         if(this.sessaoVotacao != null) {
             if (this.sessaoVotacao.getResult().equals(SessaoEnum.APROVADA)) {

@@ -9,6 +9,5 @@ import br.com.adriankich.desafio.votacao.infrastructure.respository.VotoReposito
 public interface VotoService {
 
     Voto getVoto(Long id);
-
     Voto createVoto(SessaoVotacao sessaoVotacao, Associado associado, VotoEnum votoOption);
 }

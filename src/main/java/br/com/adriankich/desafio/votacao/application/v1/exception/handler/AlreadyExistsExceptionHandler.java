@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AlreadyExistsExceptionHandler implements ResourceExceptionHandler<AlreadyExistsException> {
 
+    /**
+     * handle
+     *
+     * @param ex AlreadyExistsException
+     * @param request HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
     @Override
     @ExceptionHandler(AlreadyExistsException.class)
     public ResponseEntity<StandardError> handle(AlreadyExistsException ex, HttpServletRequest request) {

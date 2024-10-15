@@ -17,11 +17,24 @@ public class SessaoController implements SessaoApi {
     @Autowired
     private SessaoVotacaoServiceImpl sessaoVotacaoService;
 
+    /**
+     * getSessaoById
+     *
+     * @param id
+     * @return ResponseEntity<SessaoVotacaoResponseDTO>
+     */
     @Override
     public ResponseEntity<SessaoVotacaoResponseDTO> getSessaoById(Long id) {
         return ResponseEntity.ok(SessaoVotacaoAdapter.entityToDto(sessaoVotacaoService.getSessaoVotacao(id)));
     }
 
+    /**
+     * addVoto
+     *
+     * @param id
+     * @param votoDTO
+     * @return ResponseEntity<VotoResponseDTO>
+     */
     @Override
     public ResponseEntity<VotoResponseDTO> addVoto(Long id, VotoRequestDTO votoDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)

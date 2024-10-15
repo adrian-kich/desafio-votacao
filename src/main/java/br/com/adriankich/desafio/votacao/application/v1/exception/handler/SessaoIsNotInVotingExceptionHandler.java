@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class SessaoIsNotInVotingExceptionHandler implements ResourceExceptionHandler<SessaoIsNotInVotingException> {
 
+    /**
+     * handle
+     *
+     * @param ex AlreadyExistsException
+     * @param request HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
     @Override
     @ExceptionHandler(SessaoIsNotInVotingException.class)
     public ResponseEntity<StandardError> handle(SessaoIsNotInVotingException ex, HttpServletRequest request) {
