@@ -3,6 +3,7 @@ package br.com.adriankich.desafio.votacao.application.v1.web.pauta;
 import br.com.adriankich.desafio.votacao.application.v1.adapter.PautaAdapter;
 import br.com.adriankich.desafio.votacao.application.v1.adapter.SessaoVotacaoAdapter;
 import br.com.adriankich.desafio.votacao.application.v1.dto.*;
+import br.com.adriankich.desafio.votacao.application.v1.swagger.PautaSwagger;
 import br.com.adriankich.desafio.votacao.domain.model.Pauta;
 import br.com.adriankich.desafio.votacao.domain.service.impl.PautaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class PautaController implements PautaApi{
+public class PautaController implements PautaApi, PautaSwagger {
 
     @Autowired
     private PautaServiceImpl pautaService;

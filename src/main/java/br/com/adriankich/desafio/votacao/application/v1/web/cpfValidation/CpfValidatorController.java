@@ -1,5 +1,6 @@
 package br.com.adriankich.desafio.votacao.application.v1.web.cpfValidation;
 
+import br.com.adriankich.desafio.votacao.application.v1.swagger.CpfValidatorSwagger;
 import br.com.adriankich.desafio.votacao.domain.enums.ValidatorEnum;
 import br.com.adriankich.desafio.votacao.domain.service.impl.CpfValidatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 @RestController
-public class CpfValidatorController implements CpfValidatorApi {
+public class CpfValidatorController implements CpfValidatorApi, CpfValidatorSwagger {
 
     @Autowired
     private CpfValidatorServiceImpl cpfValidatorService;

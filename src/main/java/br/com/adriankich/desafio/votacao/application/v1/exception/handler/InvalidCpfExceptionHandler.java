@@ -20,6 +20,6 @@ public class InvalidCpfExceptionHandler implements ResourceExceptionHandler<Inva
     @Override
     @ExceptionHandler(InvalidCpfException.class)
     public ResponseEntity<?> handle(InvalidCpfException ex, HttpServletRequest request) {
-        return response(ex, request, HttpStatus.BAD_REQUEST);
+        return response(ex, request, HttpStatus.NOT_FOUND);
     }
 }

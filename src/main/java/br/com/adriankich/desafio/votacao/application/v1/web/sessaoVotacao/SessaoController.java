@@ -5,6 +5,7 @@ import br.com.adriankich.desafio.votacao.application.v1.adapter.VotoAdapter;
 import br.com.adriankich.desafio.votacao.application.v1.dto.SessaoVotacaoResponseDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.VotoRequestDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.VotoResponseDTO;
+import br.com.adriankich.desafio.votacao.application.v1.swagger.SessaoVotacaoSwagger;
 import br.com.adriankich.desafio.votacao.domain.service.impl.SessaoVotacaoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SessaoController implements SessaoApi {
+public class SessaoController implements SessaoApi, SessaoVotacaoSwagger {
 
     @Autowired
     private SessaoVotacaoServiceImpl sessaoVotacaoService;

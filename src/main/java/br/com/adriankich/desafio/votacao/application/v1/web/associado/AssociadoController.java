@@ -3,6 +3,7 @@ package br.com.adriankich.desafio.votacao.application.v1.web.associado;
 import br.com.adriankich.desafio.votacao.application.v1.adapter.AssociadoAdapter;
 import br.com.adriankich.desafio.votacao.application.v1.dto.AssociadoRequestDTO;
 import br.com.adriankich.desafio.votacao.application.v1.dto.AssociadoResponseDTO;
+import br.com.adriankich.desafio.votacao.application.v1.swagger.AssociadoSwagger;
 import br.com.adriankich.desafio.votacao.domain.service.impl.AssociadoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class AssociadoController implements AssociadoApi {
+public class AssociadoController implements AssociadoApi, AssociadoSwagger {
 
     @Autowired
     private AssociadoServiceImpl associadoService;
