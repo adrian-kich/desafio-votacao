@@ -23,7 +23,6 @@ public class CpfValidatorController implements CpfValidatorApi {
         body.put("status", status);
 
         if(status.equals(ValidatorEnum.UNABLE_TO_VOTE)) {
-            body.put("status", status);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
         } else {
             return ResponseEntity.ok(body);
