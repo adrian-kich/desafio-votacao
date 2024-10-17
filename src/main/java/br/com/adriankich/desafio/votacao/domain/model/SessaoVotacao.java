@@ -11,7 +11,9 @@ import java.util.List;
 
 @Setter
 @Getter
+@Builder
 @EqualsAndHashCode(of = "id")
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "sessao_votacao")
