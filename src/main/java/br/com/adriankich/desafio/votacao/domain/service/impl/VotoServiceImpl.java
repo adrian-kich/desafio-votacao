@@ -1,6 +1,7 @@
 package br.com.adriankich.desafio.votacao.domain.service.impl;
 
 import br.com.adriankich.desafio.votacao.domain.enums.VotoEnum;
+import br.com.adriankich.desafio.votacao.domain.exception.NotFoundException;
 import br.com.adriankich.desafio.votacao.domain.model.Associado;
 import br.com.adriankich.desafio.votacao.domain.model.SessaoVotacao;
 import br.com.adriankich.desafio.votacao.domain.model.Voto;
@@ -25,7 +26,8 @@ public class VotoServiceImpl implements VotoService {
      */
     @Override
     public Voto getVoto(Long id) {
-        return votoRepository.findById(id).orElseThrow();
+        return votoRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Não foi encontrado um voto com o id: #" + id));
     }
 
     /**
